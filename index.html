@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="app.js"></script>
+	<script src="controllers/editMovie.ctrl.js"></script>
+	<script src="controllers/gallery.ctrl.js"></script>
+	<script src="controllers/movieSynopsis.ctrl.js"></script>
+	
+	<body>
+		<h1>Movie Library Extreme</h1>
+		<div ng-app="movieApp" ng-controller="galleryCtrl">
+			 <a ui-sref="gallery" ui-sref-active="active">Gallery</a>
+			 <a ui-sref="movieEdit" ui-sref-active="active">Edit Movie</a>
+			 <a ui-sref="movieSynopsis" ui-sref-active="active">Synopsis</a>
+			 <ui-view></ui-view>
+		</div>
+	</body>
+</html>
+
