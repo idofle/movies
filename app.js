@@ -17,3 +17,11 @@ app.config(function($stateProvider){
  		controller: "editMovieCtrl"
 	});
 });
+
+var api = {
+		startOver: function(){
+			data = undefined;
+			localStorage.clear();
+			location.reload();
+		}
+	};

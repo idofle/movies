@@ -1,4 +1,13 @@
 <h2>Your Library</h2>
-
-<p>Add a movie to your collection</p>
-<div id="moviesLibrary"> </div>
+<div id="moviesLibrary">
+	<div ng-repeat="movie in getMovies() track by $index">
+		<div class="gallery-movie-item">
+			<p>{{movie.title}} ({{movie.year}})</p>
+			<div id="gallery-img-strip" ng-repeat="picUrl in movie.pictures track by $index">
+				<div class="gallery-img-strip-container">
+					<img ng-src="{{picUrl}}" class="gallery-img-strip-photo">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

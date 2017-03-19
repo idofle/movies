@@ -1,10 +1,17 @@
 <div>
-	<form ng-controller='editMovieCtrl'>
+	<form id="form">
 		Title: <input type="text" ng-model="movie.title"></br>
 		Year: <input type="text" ng-model="movie.year"></br>
 		Synopsis: <input type="text" ng-model="movie.synopsis"></br>
-		Pictures <button ng-click="">Add</button></br>
-		<!-- show picture !-->
-		<button ng-click="addMovieToTheCollection">Add Movie</button></br>
+		Pictures:
+		<input type="file" id="upload-image" accept="image/*" onchange="angular.element(this).scope().addPicture(this)" />
+		<div id="pic-strip">
+			<div ng-repeat="picUrl in movie.pictures track by $index" class="pic-strip-photo-container">
+				<img ng-src="{{picUrl}}" class="pic-strip-photo"></img>
+				<span ng-click="removePicture(picUrl)">Delete</span>
+			</div>
+		</div>
+		<button type="submit" form="form" ng-click="addMovieToTheCollection()">Add Movie</button></br>
+		
 	</form>
 </div>

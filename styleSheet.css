@@ -1,0 +1,28 @@
+.pic-strip-photo {
+	object-fit: cover;
+	height: 200px;
+	width: 280px;
+}
+
+.pic-strip-photo-container {
+	display: inline-block;
+}
+
+.gallery-img-strip-photo {
+	object-fit: cover;
+	height: 100px;
+	width: 140px;
+}
+
+/* will be different in a more serious attempt to style */
+.gallery-img-strip-container {
+	float:left;
+	display: block;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.gallery-movie-item {
+	display: block;
+	clear: both;
+}

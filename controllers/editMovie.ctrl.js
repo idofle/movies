@@ -1,4 +1,5 @@
-app.controller('editMovieCtrl', function($scope, $state) {
+app.controller('editMovieCtrl', ['$scope', '$state', 'moviesDalService', 'filesService', 
+	function($scope, $state, moviesDalService, filesService) {
 
 	function intialize(){
 		$scope.movie = {
@@ -10,15 +11,33 @@ app.controller('editMovieCtrl', function($scope, $state) {
     	console.log($scope);
 	}
 
-	function addPicture(){
-		// add pic
+	$scope.addPicture = function(file){
+		var imgFile = file.files[0];
+
+		var success = function(imgUrl){
+			$scope.movie.pictures.push(imgUrl);
+			$scope.$apply();
+		}
+
+		var error = function(imgUrl){
+			// show error
+		}
+
+		filesService.uploadImageToImgur(imgFile, success, error);
 	}
 
-	var addMovieToTheCollection = function addMovieToTheCollection(){
-		console.log($scope);
-		// add to localStorage
+	$scope.removePicture = function(url){
+		for (var i = 0; i < $scope.movie.pictures.length; i++) {
+			if ($scope.movie.pictures[i] === url){
+				$scope.movie.pictures.splice(i, 1);
+			}
+		}
 	}
 
+	$scope.addMovieToTheCollection = function(){
+		moviesDalService.addMovie($scope.movie);
+		intialize();
+	}
 
 	intialize();    
-});
+}]);
